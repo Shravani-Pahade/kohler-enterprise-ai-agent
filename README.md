@@ -1,10 +1,10 @@
-# 🌸 Kohler Unified Enterprise AI Agent
+# Kohler Unified Enterprise AI Agent
 
-> A soft rose-gold case-study prototype for a multi-domain enterprise AI assistant.
+> A Kohler-inspired enterprise AI case-study prototype with local RAG, governed generation, and a warm charcoal, espresso, cream, and brass interface.
 
 The Kohler Unified Enterprise AI Agent answers questions across **HR Policy**, **Customer Support**, **Privacy Policy**, **Financial Guidelines**, and **Legal / Compliance**. It demonstrates domain-aware routing, local retrieval, governed generation, dynamic response formatting, and live grounding checks in a simple Streamlit chat experience.
 
-## ✦ Architecture Vision
+## Architecture Vision
 
 The full production vision is a multi-agent conversational system:
 
@@ -15,9 +15,8 @@ User message + conversation history
               ↓
      Gemini domain classifier
               ↓
- ┌────────────┼────────────┐
- HR RAG     Support RAG   Privacy RAG
- Financial RAG             Legal / Compliance RAG
+       Five specialist RAG domains
+   HR | Support | Privacy | Finance | Legal
               ↓
       Grounded Gemini answer
               ↓
@@ -30,7 +29,7 @@ User message + conversation history
 
 The production architecture is designed to support independent domain specialists, strict data governance, persistent conversation history, stronger evaluation, and additional enterprise integrations without fine-tuning the model.
 
-## ✿ Prototype Scope
+## Prototype Scope
 
 Implemented in this case-study prototype:
 
@@ -38,18 +37,19 @@ Implemented in this case-study prototype:
   - `hr_policy`
   - `customer_support`
   - `privacy_policy`
-        - `financial_guidelines`
-        - `legal_compliance`
+  - `financial_guidelines`
+  - `legal_compliance`
 - Plain Python document loading and overlapping word-based chunking
 - `sentence-transformers` embeddings using `all-MiniLM-L6-v2`
 - Local persistent ChromaDB storage in `chroma_db/`
 - Gemini-powered context-aware domain classification using recent conversation history
 - Retrieval of up to four ranked chunks from the selected domain
 - Orchestrated answer generation with sensitive-data governance instructions
-- Output detection and formatting for markdown, email, and JSON
+- Output detection and formatting for Markdown, Email, JSON, Excel/CSV, and XML
+- CSV download button in the Streamlit interface for Excel/CSV requests
 - A second Gemini call for live faithfulness checking
 - Local JSONL faithfulness logging
-- Minimal single-page Streamlit chat UI with pink styling and session-backed history
+- Minimal single-page Streamlit chat UI with Kohler-inspired charcoal, espresso, cream, and brass styling
 
 Still part of the longer production vision:
 
@@ -60,12 +60,12 @@ Still part of the longer production vision:
 - Offline `ragas` evaluation workflow and larger domain-specific evaluation sets
 - Human review workflows for sensitive or low-confidence responses
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 | --- | --- |
 | Language | Python 3.11 |
-| LLM API | Google Gemini via `google-genai` |
+| LLM API | Google Gemini via `google-genai` Interactions API |
 | Embeddings | `sentence-transformers` with `all-MiniLM-L6-v2` |
 | Vector database | Local ChromaDB |
 | UI | Streamlit |
@@ -74,7 +74,7 @@ Still part of the longer production vision:
 
 No LangChain is used. Retrieval is implemented directly in Python for transparency and easier debugging.
 
-## 🌷 Setup
+## Setup
 
 ### 1. Clone the repository
 
@@ -127,7 +127,15 @@ Never commit `.env` or expose the API key. It is excluded by `.gitignore`.
 python build_vector_store.py
 ```
 
-This loads the sample `.txt` files, creates embeddings, and writes three local collections under `chroma_db/`.
+This loads the sample `.txt` files, creates embeddings, and writes five local collections under `chroma_db`:
+
+```text
+hr_policy
+customer_support
+privacy_policy
+financial_guidelines
+legal_compliance
+```
 
 ### 6. Run the Streamlit app
 
@@ -137,7 +145,7 @@ streamlit run app.py
 
 Open the local URL shown by Streamlit, usually `http://localhost:8501`.
 
-## 💗 Demo
+## Demo
 
 Try questions from each domain:
 
@@ -149,30 +157,34 @@ Try questions from each domain:
 
 The classifier uses the current message and recent conversation context, so it can follow a topic and detect when the user switches domains. The UI displays the routed domain, retrieves the relevant local policy chunks, and generates a grounded answer.
 
-You can also request a response format directly:
+The Output Format Detector supports five formats:
 
-- Ask for **JSON** to receive `answer`, `source_domain`, and `confidence`
-- Ask for an **email** to receive a concise professional email wrapper
-- Ask for **Excel**, **CSV**, or a **download** to receive a downloadable CSV file containing the answer, source domain, and confidence
-- Ask for **XML** to receive a structured `<response>` document
-- Otherwise, receive normal **markdown** conversation text
+- **Markdown:** normal conversational text
+- **Email:** a concise professional email wrapper with a subject line
+- **JSON:** `answer`, `source_domain`, and `confidence`
+- **Excel/CSV:** a downloadable CSV containing the answer, source domain, and confidence
+- **XML:** a structured `<response>` document with `<answer>`, `<domain>`, and `<confidence>` tags
 
 After each answer, a separate Gemini grounding check records whether the answer is supported by the retrieved context in `faithfulness_log.jsonl`.
 
 Sensitive customer data is governed by the orchestrator and evaluator instructions: the system refuses direct requests to expose names, account numbers, contact details, or other identifying information.
 
-## 📁 Key Files
+## Key Files
 
-- `app.py` — pink Streamlit chat UI
+- `app.py` — Kohler-inspired Streamlit chat UI and CSV download control
 - `orchestrator.py` — routing, grounded generation, and governance
 - `domain_classifier.py` — context-aware Gemini domain classification
 - `retriever.py` — domain-scoped Chroma retrieval
 - `vector_store.py` — embeddings and local ChromaDB persistence
 - `build_vector_store.py` — CLI entry point for local indexing
-- `output_formatter.py` — markdown, email, and JSON output formatting
+- `output_formatter.py` — Markdown, Email, JSON, Excel/CSV, and XML formatting
 - `faithfulness.py` — live grounding check and JSONL logging
+- `gemini_models.py` — Gemini client and model fallback handling
+- `discover_gemini_models.py` — optional API model discovery utility
 - `data/` — sample policy documents by domain
 
-## 🌹 Notes
+## Notes
 
 This repository is a solo case-study prototype intended for local development and demonstration. The local `chroma_db/`, `.env`, virtual environment, Python caches, and JSONL logs are ignored from version control.
+
+Gemini generation uses `gemini-3.6-flash` first, then retries `gemini-3.5-flash` and `gemini-2.5-flash-lite` if a model returns a 404. The model name can be revisited as Gemini availability changes.
