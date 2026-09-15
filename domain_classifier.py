@@ -55,6 +55,8 @@ Allowed domains:
 - hr_policy: employee leave, benefits, workplace rules, or HR matters
 - customer_support: products, orders, returns, refunds, replacements, or support
 - privacy_policy: personal data, privacy rights, retention, deletion, or data handling
+- financial_guidelines: expenses, reimbursements, budgets, payments, or financial controls
+- legal_compliance: laws, regulations, compliance obligations, or legal requirements
 
 Use the conversation history only as context. The CURRENT message has priority:
 if it switches topics, return the new domain rather than following the previous one.

@@ -5,7 +5,13 @@ import re
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 DATA_ROOT = PROJECT_ROOT / "data"
-DOMAINS = ("hr_policy", "customer_support", "privacy_policy")
+DOMAINS = (
+    "hr_policy",
+    "customer_support",
+    "privacy_policy",
+    "financial_guidelines",
+    "legal_compliance",
+)
 
 
 @dataclass(frozen=True)

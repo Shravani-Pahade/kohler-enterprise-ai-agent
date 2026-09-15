@@ -1,9 +1,12 @@
+import csv
+from io import StringIO
 import json
 import re
 from typing import Any, Literal
+from xml.etree.ElementTree import Element, SubElement, tostring
 
 
-OutputFormat = Literal["json", "email", "markdown"]
+OutputFormat = Literal["json", "email", "markdown", "excel", "xml"]
 
 
 def detect_output_format(user_message: str) -> OutputFormat:
@@ -18,6 +21,10 @@ def detect_output_format(user_message: str) -> OutputFormat:
         r"\be-mail\b", normalized
     ):
         return "email"
+    if re.search(r"\b(excel|csv|download)\b", normalized):
+        return "excel"
+    if re.search(r"\bxml\b", normalized):
+        return "xml"
     return "markdown"
 
 
@@ -48,6 +55,39 @@ def format_json(answer: str, source_domain: str, confidence: float) -> str:
     return serialized
 
 
+def format_excel(answer: str, source_domain: str, confidence: float) -> str:
+    """Return CSV text suitable for a download button."""
+    if not 0 <= confidence <= 1:
+        raise ValueError("confidence must be between 0 and 1")
+
+    output = StringIO(newline="")
+    writer = csv.DictWriter(
+        output,
+        fieldnames=["answer", "source_domain", "confidence"],
+    )
+    writer.writeheader()
+    writer.writerow(
+        {
+            "answer": answer,
+            "source_domain": source_domain,
+            "confidence": confidence,
+        }
+    )
+    return output.getvalue()
+
+
+def format_xml(answer: str, source_domain: str, confidence: float) -> str:
+    """Return a simple XML response with escaped content."""
+    if not 0 <= confidence <= 1:
+        raise ValueError("confidence must be between 0 and 1")
+
+    response = Element("response")
+    SubElement(response, "answer").text = answer
+    SubElement(response, "domain").text = source_domain
+    SubElement(response, "confidence").text = str(confidence)
+    return tostring(response, encoding="unicode")
+
+
 def format_response(
     user_message: str,
     answer: str,
@@ -60,4 +100,8 @@ def format_response(
         return format_json(answer, source_domain, confidence)
     if output_format == "email":
         return format_email(answer)
+    if output_format == "excel":
+        return format_excel(answer, source_domain, confidence)
+    if output_format == "xml":
+        return format_xml(answer, source_domain, confidence)
     return format_markdown(answer)
