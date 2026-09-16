@@ -1,4 +1,20 @@
-Employees can claim reimbursement for business travel expenses up to $500 per trip without prior approval.
-All expense claims must be submitted within 30 days with itemized receipts attached.
-Client entertainment expenses require manager approval before booking.
-Reimbursements are processed within 10 business days via direct deposit.
+Employees can claim reimbursement for business travel expenses up to ₹40,000 per trip without prior approval.
+All expense claims must be submitted within 30 days of the expense being incurred, with itemized receipts attached.
+Client entertainment expenses require manager approval before booking, regardless of amount.
+Reimbursements are processed within 10 business days via direct deposit to the employee's registered account.
+Airfare bookings must be made through the approved corporate travel portal to qualify for reimbursement.
+Mileage for personal vehicle use on company business is reimbursed at the current standard company rate per kilometer.
+Expenses submitted without valid receipts may be reimbursed at management discretion up to a ₹2,000 cap per item.
+International travel expenses must be converted to Indian Rupees using the exchange rate on the date of purchase.
+Alcohol expenses are reimbursable only as part of approved client entertainment, up to a reasonable per-person limit.
+Home office equipment purchases require pre-approval and are capped at ₹25,000 per employee per year.
+Corporate credit card statements must be reconciled monthly by the cardholder through the finance portal.
+Expenses related to personal development, such as approved courses or certifications, are reimbursed at 100% upon completion.
+Any expense exceeding ₹80,000 requires a second-level approval from a department director.
+Duplicate or unclear expense submissions will be returned to the employee for clarification before processing.
+Per diem rates for domestic travel are set annually and published on the finance intranet page.
+Employees found to have submitted fraudulent expense claims are subject to disciplinary action up to termination.
+Petty cash reimbursements are capped at ₹4,000 and must be logged with the office administrator.
+Software or SaaS subscriptions for work purposes must be approved by the relevant department head before purchase.
+All expense reports must be submitted through the official finance system, not via email or informal channels.
+Year-end expense submissions must be finalized by December 15th to be processed within the current fiscal year.

@@ -1,4 +1,20 @@
-Employees are entitled to 18 days of paid annual leave per calendar year.
-Sick leave requires a medical certificate for absences longer than 2 consecutive days.
-Leave requests must be submitted at least 3 working days in advance via the HR portal.
-Unused annual leave can be carried forward up to a maximum of 5 days into the next year.
+Employees are entitled to 18 days of paid annual leave per calendar year, accrued monthly at a rate of 1.5 days.
+Sick leave requires a medical certificate for absences longer than 2 consecutive working days.
+Leave requests must be submitted at least 3 working days in advance via the HR portal, except in emergencies.
+Unused annual leave can be carried forward up to a maximum of 5 days into the next calendar year.
+Any leave beyond the carry-forward limit will be forfeited unless approved by a department head.
+New employees become eligible for paid leave after completing 90 days of continuous employment.
+Maternity leave is granted for 26 weeks with full pay, in accordance with company policy and applicable law.
+Paternity leave is granted for 2 weeks with full pay, to be taken within 6 months of the child's birth.
+Bereavement leave of up to 5 days is granted for the loss of an immediate family member.
+Employees working remotely are subject to the same leave policies as those working on-site.
+Public holidays observed by the company are listed annually on the HR portal and do not count against annual leave.
+Half-day leave requests are permitted and are deducted as 0.5 days from the annual leave balance.
+Employees on probation are eligible for leave but require manager approval for any leave exceeding 2 days.
+Leave taken without prior approval, except in documented emergencies, may result in a formal warning.
+Employees returning from extended leave (over 30 days) must complete a re-onboarding check-in with HR.
+Compensatory leave may be granted for approved overtime work during company-recognized busy periods.
+All leave balances reset at the start of the calendar year, except for the permitted carry-forward days.
+Part-time employees accrue leave on a pro-rated basis according to their contracted working hours.
+Leave encashment is available only at the time of final settlement upon resignation or termination.
+Managers are responsible for ensuring adequate team coverage before approving overlapping leave requests.

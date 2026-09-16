@@ -1,4 +1,20 @@
-Customer personal data is collected only for order processing and support purposes.
+Customer personal data is collected only for order processing, support, and service improvement purposes.
 We do not sell customer data to third parties under any circumstances.
-Customers can request deletion of their personal data by contacting privacy@kohler.com.
-Data is retained for 24 months after the last transaction, then automatically deleted.
+Customers can request deletion of their personal data by contacting privacy@kohler.com at any time.
+Data is retained for 24 months after the last transaction, then automatically and permanently deleted.
+Personal data includes name, contact information, purchase history, and support interaction records.
+Payment information is processed through secure, PCI-compliant third-party payment processors and is not stored directly.
+Customers have the right to request a copy of all personal data held about them, provided free of charge.
+Marketing communications are sent only to customers who have explicitly opted in and can be unsubscribed at any time.
+Data may be shared with logistics partners solely for the purpose of order fulfillment and delivery.
+All employee access to customer data is logged and subject to periodic internal audit.
+In the event of a data breach, affected customers will be notified within 72 hours as required by regulation.
+Cookies and website tracking data are used only for improving user experience and are governed by a separate cookie policy.
+Customers under the age of 16 must have parental consent before any personal data is collected.
+Data collected through customer support calls may be recorded for quality and training purposes, with prior notice.
+Anonymized and aggregated data may be used for internal analytics and is not considered personal data under this policy.
+Customers can withdraw consent for optional data processing activities without affecting their ability to use core services.
+Personal data is stored on secure servers with encryption both at rest and in transit.
+Third-party vendors handling customer data on our behalf are contractually bound to equivalent privacy standards.
+This privacy policy is reviewed annually and updated to reflect changes in law or business practice.
+Any changes to this policy will be communicated to customers via email and posted on the company website.
