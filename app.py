@@ -1,7 +1,9 @@
 import streamlit as st
 
+from document_loader import DOMAINS
 from orchestrator import run_orchestrator
 from output_formatter import detect_output_format, format_response
+from vector_store import build_vector_store, get_chroma_client
 
 
 st.set_page_config(
@@ -9,6 +11,25 @@ st.set_page_config(
     page_icon="🌸",
     layout="centered",
 )
+
+
+@st.cache_resource(show_spinner=False)
+def ensure_knowledge_base() -> dict[str, int]:
+    """Build the local ChromaDB collections once when they are missing."""
+    client = get_chroma_client()
+    collections = {collection.name: collection for collection in client.list_collections()}
+    knowledge_base_ready = all(
+        domain in collections and collections[domain].count() > 0
+        for domain in DOMAINS
+    )
+    if not knowledge_base_ready:
+        with st.spinner("Setting up knowledge base for the first time..."):
+            collections = build_vector_store()
+
+    return {domain: collections[domain].count() for domain in DOMAINS}
+
+
+ensure_knowledge_base()
 
 st.markdown(
     """
