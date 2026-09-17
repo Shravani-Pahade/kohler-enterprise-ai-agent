@@ -8,7 +8,7 @@ from vector_store import build_vector_store, get_chroma_client
 
 st.set_page_config(
     page_title="Kohler Unified Enterprise AI Agent",
-    page_icon="🌸",
+    page_icon="K",
     layout="centered",
 )
 
@@ -35,29 +35,27 @@ st.markdown(
     """
     <style>
     :root {
-        --charcoal: #34312f;
-        --espresso: #3b2419;
-        --espresso-soft: #60412e;
-        --gold: #c59a55;
-        --gold-soft: #e2c58d;
-        --cream: #f8f3ec;
-        --paper: #fffdf8;
-        --ink: #30251f;
-        --muted: #76665a;
-        --line: #ded1c0;
+        --white: #ffffff;
+        --black: #1a1a1a;
+        --maroon: #8c1d24;
+        --maroon-dark: #70171d;
+        --taupe: #ede7dd;
+        --grey: #d9d9d9;
+        --muted: #666666;
     }
 
     .stApp {
-        background: linear-gradient(145deg, #f3eee6 0%, #fbf8f1 48%, #e9ded0 100%);
-        color: var(--ink);
+        background: var(--white);
+        color: var(--black);
     }
 
     [data-testid="stHeader"] {
-        background: var(--charcoal);
+        background: var(--white);
+        border-bottom: 1px solid var(--grey);
     }
 
     [data-testid="stToolbar"] {
-        color: var(--cream);
+        color: var(--black);
     }
 
     [data-testid="stMainBlockContainer"] {
@@ -68,14 +66,14 @@ st.markdown(
 
     .hero {
         margin: -1.25rem -2rem 1.8rem;
-        padding: 0.85rem 2rem 1rem;
-        background: var(--espresso);
-        border-bottom: 3px solid var(--gold);
+        padding: 1.35rem 2rem 1.15rem;
+        background: var(--white);
+        border-bottom: 4px solid var(--maroon);
         text-align: center;
     }
 
     .hero .brand {
-        color: #ead9bb;
+        color: var(--black);
         font-family: Georgia, serif;
         font-size: 0.68rem;
         letter-spacing: 0.16em;
@@ -84,7 +82,7 @@ st.markdown(
 
     .hero h1 {
         margin: 0;
-        color: var(--paper);
+        color: var(--black);
         font-family: Georgia, serif;
         font-size: 2rem;
         font-weight: 400;
@@ -93,7 +91,7 @@ st.markdown(
 
     .hero p {
         margin: 0.6rem 0 0;
-        color: #dfc29a;
+        color: var(--muted);
         font-size: 1rem;
     }
 
@@ -101,19 +99,19 @@ st.markdown(
         border-radius: 22px;
         margin: 0.75rem 0;
         padding: 0.85rem 1rem;
-        box-shadow: 0 7px 22px rgba(71, 46, 28, 0.1);
-        border: 1px solid var(--line);
+        box-shadow: 0 5px 18px rgba(26, 26, 26, 0.06);
+        border: 1px solid var(--grey);
     }
 
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
-        background: #ddc7a7;
-        color: var(--espresso);
+        background: var(--taupe);
+        color: var(--black);
         margin-left: 12%;
     }
 
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) {
-        background: rgba(255, 253, 248, 0.95);
-        color: var(--ink);
+        background: var(--white);
+        color: var(--black);
         margin-right: 12%;
     }
 
@@ -126,62 +124,63 @@ st.markdown(
         margin: 0 0 0.45rem;
         padding: 0.2rem 0.65rem;
         border-radius: 999px;
-        color: var(--espresso);
+        color: var(--white);
+        background: var(--maroon);
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.03em;
     }
 
-    .domain-hr { background: #e3c48e; }
-    .domain-support { background: #d9c9b9; }
-    .domain-privacy { background: #c8d0c0; }
-    .domain-financial { background: #e7c99d; }
-    .domain-legal { background: #c9d5df; }
-    .domain-unknown { background: #ded7cf; }
+    .domain-hr,
+    .domain-support,
+    .domain-privacy,
+    .domain-financial,
+    .domain-legal,
+    .domain-unknown { background: var(--maroon); }
 
     div.stButton > button {
         min-height: 2.35rem;
-        border: 1px solid var(--gold);
+        border: 1px solid var(--maroon);
         border-radius: 999px;
-        background: rgba(255, 253, 248, 0.88);
-        color: var(--espresso);
+        background: var(--maroon);
+        color: var(--white);
         font-size: 0.78rem;
         font-weight: 600;
-        box-shadow: 0 4px 12px rgba(71, 46, 28, 0.08);
+        box-shadow: 0 4px 12px rgba(26, 26, 26, 0.08);
     }
 
     div.stButton > button:hover {
-        border-color: var(--gold-soft);
-        background: var(--espresso);
-        color: var(--paper);
+        border-color: var(--maroon-dark);
+        background: var(--maroon-dark);
+        color: var(--white);
     }
 
     [data-testid="stForm"] {
-        border: 1px solid var(--gold-soft);
+        border: 1px solid var(--grey);
         border-radius: 18px;
-        background: rgba(255, 253, 248, 0.78);
+        background: var(--white);
         padding: 0.35rem;
-        box-shadow: 0 8px 26px rgba(71, 46, 28, 0.1);
+        box-shadow: 0 8px 26px rgba(26, 26, 26, 0.08);
     }
 
     [data-testid="stTextInput"] input {
-        border-color: var(--gold-soft);
+        border-color: var(--grey);
         border-radius: 22px;
-        background: var(--paper);
-        color: var(--ink);
+        background: var(--white);
+        color: var(--black);
     }
 
     [data-testid="stFormSubmitButton"] button {
         border-radius: 999px;
-        border-color: var(--espresso);
-        background: var(--espresso);
-        color: var(--paper);
+        border-color: var(--maroon);
+        background: var(--maroon);
+        color: var(--white);
     }
 
     [data-testid="stFormSubmitButton"] button:hover {
-        border-color: var(--gold);
-        background: var(--espresso-soft);
-        color: var(--paper);
+        border-color: var(--maroon-dark);
+        background: var(--maroon-dark);
+        color: var(--white);
     }
 
     .examples-label {
@@ -202,7 +201,7 @@ st.markdown(
     <div class="hero">
         <div class="brand">The Kohler Enterprise Concierge</div>
         <h1>Kohler Unified Enterprise AI Agent</h1>
-        <p>Ask about HR, Support, Privacy, Financial Guidelines, or Legal Compliance</p>
+        <p>Ask about HR Policy, Customer Support, Privacy Policy, Financial Guidelines, or Legal Compliance</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -269,7 +268,7 @@ if user_message:
         st.markdown(user_message)
 
     try:
-        with st.spinner("Thinking... 🌸"):
+        with st.spinner("Thinking..."):
             result = run_orchestrator(
                 current_message=user_message,
                 conversation_history=st.session_state.conversation_history,
