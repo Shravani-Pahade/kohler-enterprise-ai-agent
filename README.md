@@ -4,6 +4,10 @@
 
 The Kohler Unified Enterprise AI Agent answers questions across **HR Policy**, **Customer Support**, **Privacy Policy**, **Financial Guidelines**, and **Legal / Compliance**. It demonstrates domain-aware routing, local retrieval, governed generation, dynamic response formatting, and live grounding checks in a simple Streamlit chat experience.
 
+## Demo Video
+
+[Watch the Kohler Unified Enterprise AI Agent demo](https://youtu.be/AWF3m2nIauA)
+
 ## Architecture Vision
 
 The full production vision is a multi-agent conversational system:
